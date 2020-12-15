@@ -106,9 +106,8 @@ export default function HeaderContainer({
           progress: scene.progress,
           options: scene.descriptor.options,
           route: scene.descriptor.route,
-          navigation: scene.descriptor.navigation as StackNavigationProp<
-            ParamListBase
-          >,
+          navigation: scene.descriptor
+            .navigation as StackNavigationProp<ParamListBase>,
           styleInterpolator:
             mode === 'float'
               ? isHeaderStatic

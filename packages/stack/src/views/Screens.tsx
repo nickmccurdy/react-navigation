@@ -60,7 +60,7 @@ export const MaybeScreen = ({
   ...rest
 }: ViewProps & {
   enabled: boolean;
-  active: 0 | 1 | 2 | Animated.AnimatedInterpolation;
+  active: 0 | 1 | Animated.AnimatedInterpolation;
   children: React.ReactNode;
 }) => {
   if (enabled && Platform.OS === 'web') {
@@ -70,14 +70,10 @@ export const MaybeScreen = ({
   if (enabled && Screens?.screensEnabled()) {
     if (shouldUseActivityState) {
       return (
-        // @ts-expect-error: there was an `active` prop and no `activityState` in older version and stackPresentation was required
         <Screens.Screen enabled={enabled} activityState={active} {...rest} />
       );
     } else {
-      return (
-        // @ts-expect-error: there was an `active` prop and no `activityState` in older version and stackPresentation was required
-        <Screens.Screen enabled={enabled} active={active} {...rest} />
-      );
+      return <Screens.Screen enabled={enabled} active={active} {...rest} />;
     }
   }
 
